@@ -9,22 +9,6 @@ This repo was designed to give a guide from does whom are looking forward to mas
 
 Those challenges aim to challenge you from begginer level to pro level so that you practice as you go.
 
-## Philosophy
-
-I ([Uanela](https://github.com/uanela)) learned lua on a very very short time and grasped everything (kind of), what I mean is that I learned everything that there was to learn when you learn a new programming language but only learning (reading, watch tutorials or wather) is not enough to start going out there trying to build the next BIG `nvim` plugin in the world or maybe
-
-try to contribute to one of the biggest nvim plugins in the world. If knowing this guess what, I did it, I started contributing on [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) thanks to [Alex Courtis](https://github.com/alex-courtis) I had my first merge (A very simple refactor[nvim-tree #3222](https://github.com/nvim-tree/nvim-tree.lua/pull/3222)) and got more tasks to keep going on. I got started with my second
-
-task but reality then hit me so HARD that I couldn't ignore the pain, I thought I was doing great (which I was slightly) but then things kind of fell apart, on my second PR [nvim-tree #3233](https://github.com/nvim-tree/nvim-tree.lua/pull/3233) I did good job which was appreciated by the maintainers but need to do somes changes because
-
-some parts of the refactor (Yes the second PR was a refactor too) didn't go very well and were throwing some errors. Even after [Alex Courtis](https://github.com/alex-courtis) guide me on what I should work I was still struggling a little big with the task needing to keep going around reading some articles (which is ok on any level of carrer), nowadays checking with AI also (which many will not admit)
-
-But I noticed something I was searching for really really basic things which I should know from the beggining but I didn't, you know why??? because I've never ever before developed some real useful using lua related to nvim, which caused to struggle to basic things (not at all because I am contributing to world class tree on nvim-tree) but for me I felt that were
-
-basics. Because I looked to other langauges I use and I became like I can write marvelous things in other languages with my eyes closed, but I am struggling here so I decided to do what I did on the past with `JavaScript` even after beging able to use it for many thing I decided to create a bar level for myself in which I kept going higher and higher.
-
-I created something for just like what you see on this repo, a collection of challenges devided into tree major levels Beginner, Mid, Pro. So that I could measure my own knowledge with confidence and pratice more, which ended up being one of the best things I did for mastering JavaScript/TypeScript (Check my Github profile by yourself [Uanela Como](https://github.com/uanela)).
-
 ## How To Take The Challenges
 
 Notice that the challenges are devided into 3 major levels:
@@ -274,3 +258,19 @@ These are hard. No shortcuts.
 This is **actual Lua mastery**.
 
 You’ll _feel dumb_ during Mid. That’s expected.
+
+## Motivation
+
+I ([Uanela](https://github.com/uanela)) learned lua on a very very short time and grasped everything (kind of), what I mean is that I learned everything that there was to learn when you learn a new programming language but only learning (reading, watch tutorials or wather) is not enough to start going out there trying to build the next BIG `nvim` plugin in the world or maybe
+
+try to contribute to one of the biggest nvim plugins in the world. If knowing this guess what, I did it, I started contributing on [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) thanks to [Alex Courtis](https://github.com/alex-courtis) I had my first merge (A very simple refactor[nvim-tree #3222](https://github.com/nvim-tree/nvim-tree.lua/pull/3222)) and got more tasks to keep going on. I got started with my second
+
+task but reality then hit me so HARD that I couldn't ignore the pain, I thought I was doing great (which I was slightly) but then things kind of fell apart, on my second PR [nvim-tree #3233](https://github.com/nvim-tree/nvim-tree.lua/pull/3233) I did good job which was appreciated by the maintainers but need to do somes changes because
+
+some parts of the refactor (Yes the second PR was a refactor too) didn't go very well and were throwing some errors. Even after [Alex Courtis](https://github.com/alex-courtis) guide me on what I should work I was still struggling a little big with the task needing to keep going around reading some articles (which is ok on any level of carrer), nowadays checking with AI also (which many will not admit)
+
+But I noticed something I was searching for really really basic things which I should know from the beggining but I didn't, you know why??? because I've never ever before developed some real useful using lua related to nvim, which caused to struggle to basic things (not at all because I am contributing to world class tree on nvim-tree) but for me I felt that were
+
+basics. Because I looked to other langauges I use and I became like I can write marvelous things in other languages with my eyes closed, but I am struggling here so I decided to do what I did on the past with `JavaScript` even after beging able to use it for many thing I decided to create a bar level for myself in which I kept going higher and higher.
+
+I created something for just like what you see on this repo, a collection of challenges devided into tree major levels Beginner, Mid, Pro. So that I could measure my own knowledge with confidence and pratice more, which ended up being one of the best things I did for mastering JavaScript/TypeScript (Check my Github profile by yourself [Uanela Como](https://github.com/uanela)).
