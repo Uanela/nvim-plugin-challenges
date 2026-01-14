@@ -1,6 +1,6 @@
 # Neovim Plugins Challenges
 
-This repo was designed to give a guide from does whom are looking forward to master or be good at developing nvim plugins
+This repo was designed to give a guide for those whom are looking forward to master or be good at developing nvim plugins
 
 ## Pre Requisites:
 
@@ -55,6 +55,18 @@ These should feel “too easy” at first. That’s intentional.
 - Lua modules
 - Plugin structure
 
+**Challenge context**
+
+This is your "hello world" for Neovim plugins, but the real lesson is not the command itself. It is about understanding **how Neovim finds and executes Lua code**.
+
+You should be able to answer:
+
+- Why Neovim can find this Lua file at all
+- When this code runs (startup vs command execution)
+- What part runs immediately and what waits for user action
+
+If you are unsure about any of these, this challenge is doing its job.
+
 ## 2. `nvim-echo-mode`
 
 **What it does**
@@ -65,6 +77,17 @@ These should feel “too easy” at first. That’s intentional.
 
 - `vim.bo`, `vim.fn.mode`
 - Lua ↔ Vim data access
+
+**Challenge context**
+
+This challenge is about **reading Neovim state without changing it**.
+
+Focus on:
+
+- The difference between buffer-local and global values
+- How Vim concepts are exposed through Lua tables and functions
+
+Before you mutate state, you must be comfortable observing it.
 
 ## 3. `nvim-buffer-count`
 
@@ -78,6 +101,18 @@ These should feel “too easy” at first. That’s intentional.
 - Iterating tables
 - Returning values
 
+**Challenge context**
+
+This challenge teaches you that Neovim APIs return **raw data**, not opinions.
+
+Pay attention to:
+
+- What the API actually returns
+- What counts as an "open" buffer
+- How much interpretation is left to you
+
+This mental model shows up everywhere in real plugins.
+
 ## 4. `nvim-auto-trim`
 
 **What it does**
@@ -89,6 +124,17 @@ These should feel “too easy” at first. That’s intentional.
 - `autocmd`
 - `vim.api.nvim_create_autocmd`
 - Callbacks
+
+**Challenge context**
+
+This is your first real encounter with **event-driven code**.
+
+You should notice:
+
+- When the callback runs relative to user actions
+- What buffer is considered current when it runs
+
+Most beginner bugs come from misunderstanding event timing.
 
 ## 5. `nvim-simple-toggle`
 
@@ -102,6 +148,17 @@ These should feel “too easy” at first. That’s intentional.
 - Boolean logic
 - Tables as state holders
 
+**Challenge context**
+
+This challenge introduces **intentional mutation** of editor state.
+
+Think about:
+
+- Reading state before writing it
+- Making sure the toggle is always reversible
+
+From here on, mistakes start to have visible effects.
+
 ## 6. `nvim-file-notifier`
 
 **What it does**
@@ -113,6 +170,17 @@ These should feel “too easy” at first. That’s intentional.
 - Events
 - `BufEnter`
 - Execution order
+
+**Challenge context**
+
+This challenge reinforces that some code runs **many times**, not once.
+
+Pay attention to:
+
+- How often the event fires
+- What happens when switching buffers quickly
+
+Understanding execution frequency is critical for performance later.
 
 ## 7. `nvim-basic-keymap`
 
@@ -126,6 +194,17 @@ These should feel “too easy” at first. That’s intentional.
 - Function references
 - Lazy execution
 
+**Challenge context**
+
+This challenge is about separating **definition time** from **execution time**.
+
+You should understand:
+
+- Why functions are passed instead of called
+- Why keymap code does not run immediately
+
+Confusing these two concepts causes subtle bugs.
+
 ## 8. `nvim-config-check`
 
 **What it does**
@@ -137,6 +216,17 @@ These should feel “too easy” at first. That’s intentional.
 - Tables as configuration
 - Validation logic
 - Error handling
+
+**Challenge context**
+
+This challenge introduces **defensive thinking**.
+
+You should consider:
+
+- How users can misconfigure things
+- How to report problems without crashing Neovim
+
+This is the first step toward writing plugins other people can safely use.
 
 ## MID — 5 PLUGINS
 
@@ -285,6 +375,20 @@ These are hard. No shortcuts.
 - UI lifecycle
 - Separation of concerns
 
+**Challenge context**
+
+This challenge is about long-lived state and UI lifecycle, not drawing windows.
+
+You should be thinking about:
+
+- What state exists independently of the UI
+- What state is derived purely from rendering
+- What happens when the window is closed, reopened, or resized
+
+The hard part is not creating a floating window — it’s ensuring your internal state remains correct even when the UI disappears or updates out of order.
+
+If you mix UI state with business logic, you will feel it here.
+
 ## 15. `nvim-lsp-helper`
 
 **What it does**
@@ -299,6 +403,20 @@ These are hard. No shortcuts.
 - Callback composition
 - Error handling
 
+**Challenge context**
+
+This challenge forces you to reason about **asynchronous systems you do not control**.
+
+Focus on:
+
+- What guarantees the LSP client gives you (and what it does not)
+- How to associate responses with requests
+- How caching can become stale or incorrect
+
+You are expected to handle partial failures gracefully. If one LSP request fails, your entire plugin should not collapse.
+
+This challenge teaches you to treat async code as a first-class architectural concern, not an afterthought.
+
 ## 16. `nvim-plugin-framework`
 
 **What it does**
@@ -312,6 +430,18 @@ These are hard. No shortcuts.
 - Metatables
 - Public vs private APIs
 - Real Lua architecture
+
+**Challenge context**
+
+This is not about features — it is about **designing constraints**.
+
+You should be thinking about:
+
+- What parts of your system are stable contracts
+- What parts are implementation details
+- How users can misuse your API and how you prevent it
+
+The real difficulty here is deciding what _not_ to expose.
 
 This is **actual Lua mastery**.
 
