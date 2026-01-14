@@ -42,7 +42,7 @@ Goal: **Lua basics + Neovim API + tables + execution**
 
 These should feel “too easy” at first. That’s intentional.
 
-## 1. `hello-command.nvim`
+## 1. `nvim-hello-command`
 
 **What it does**
 
@@ -55,7 +55,7 @@ These should feel “too easy” at first. That’s intentional.
 - Lua modules
 - Plugin structure
 
-## 2. `echo-mode.nvim`
+## 2. `nvim-echo-mode`
 
 **What it does**
 
@@ -66,7 +66,7 @@ These should feel “too easy” at first. That’s intentional.
 - `vim.bo`, `vim.fn.mode`
 - Lua ↔ Vim data access
 
-## 3. `buffer-count.nvim`
+## 3. `nvim-buffer-count`
 
 **What it does**
 
@@ -78,7 +78,7 @@ These should feel “too easy” at first. That’s intentional.
 - Iterating tables
 - Returning values
 
-## 4. `auto-trim.nvim`
+## 4. `nvim-auto-trim`
 
 **What it does**
 
@@ -90,7 +90,7 @@ These should feel “too easy” at first. That’s intentional.
 - `vim.api.nvim_create_autocmd`
 - Callbacks
 
-## 5. `simple-toggle.nvim`
+## 5. `nvim-simple-toggle`
 
 **What it does**
 
@@ -102,7 +102,7 @@ These should feel “too easy” at first. That’s intentional.
 - Boolean logic
 - Tables as state holders
 
-## 6. `file-notifier.nvim`
+## 6. `nvim-file-notifier`
 
 **What it does**
 
@@ -114,7 +114,7 @@ These should feel “too easy” at first. That’s intentional.
 - `BufEnter`
 - Execution order
 
-## 7. `basic-keymap.nvim`
+## 7. `nvim-basic-keymap`
 
 **What it does**
 
@@ -126,7 +126,7 @@ These should feel “too easy” at first. That’s intentional.
 - Function references
 - Lazy execution
 
-## 8. `config-check.nvim`
+## 8. `nvim-config-check`
 
 **What it does**
 
@@ -144,7 +144,7 @@ Goal: **state, modules, require, async, real Lua problems**
 
 Now things will break. Good.
 
-## 9. `session-lite.nvim`
+## 9. `nvim-session-lite`
 
 **What it does**
 
@@ -156,7 +156,19 @@ Now things will break. Good.
 - File IO
 - Serialization
 
-## 10. `project-root.nvim`
+**Challenge context**
+
+This challenge is about understanding **what a session really is** in Neovim. You are not expected to recreate `:mksession`. Instead, focus on the _minimum viable state_ that allows you to leave Neovim and come back without feeling lost.
+
+Questions you should answer while implementing:
+
+- What information is truly necessary to restore a working context?
+- When should state be written to disk?
+- What happens if a buffer no longer exists when restoring?
+
+The goal is not completeness, but **clear ownership of state and deterministic restore behavior**.
+
+## 10. `nvim-project-root`
 
 **What it does**
 
@@ -168,7 +180,17 @@ Now things will break. Good.
 - `vim.loop.fs_stat`
 - Caching results
 
-## 11. `command-history.nvim`
+**Challenge context**
+
+This challenge exists to make you reason about the filesystem **outside of buffers**. The hard part is not detecting a root once, but deciding:
+
+- From which directory the search should start
+- How far up the tree you should walk
+- When cached results become invalid
+
+A correct solution is one that is predictable, fast, and explainable — not one that handles every edge case.
+
+## 11. `nvim-command-history`
 
 **What it does**
 
@@ -180,7 +202,19 @@ Now things will break. Good.
 - Table mutation
 - Performance considerations
 
-## 12. `async-grep.nvim`
+**Challenge context**
+
+This plugin is about **controlled mutation**. You will be mutating the same table repeatedly over a long-running Neovim session.
+
+Things to think about:
+
+- How do you prevent unbounded memory growth?
+- Where does this state live, and who owns it?
+- What happens when Neovim is open for hours?
+
+This challenge teaches you that most real Lua bugs come from _state that lives too long_.
+
+## 12. `nvim-async-grep`
 
 **What it does**
 
@@ -193,7 +227,19 @@ Now things will break. Good.
 - Async callbacks
 - Race conditions
 
-## 13. `plugin-manager-lite.nvim`
+**Challenge context**
+
+This challenge introduces **time** as a variable. Your code will no longer execute top-to-bottom.
+
+You should pay attention to:
+
+- What happens if the user runs the command twice quickly
+- How you associate results with the correct request
+- What state is safe to mutate inside callbacks
+
+If this plugin behaves incorrectly under fast repeated usage, that is a sign you found the lesson.
+
+## 13. `nvim-plugin-manager-lite`
 
 **What it does**
 
@@ -205,6 +251,18 @@ Now things will break. Good.
 - `require` pitfalls
 - Dynamic loading
 
+**Challenge context**
+
+This challenge is intentionally dangerous. You are dealing directly with code loading and execution.
+
+While implementing, think carefully about:
+
+- When code is executed versus when it is merely defined
+- How `require` caches modules
+- What happens if loading fails halfway through
+
+This is the challenge where most people finally understand why Lua errors can feel "sticky".
+
 This is where Lua _really_ clicks.
 
 # PRO — 3 PLUGINS
@@ -213,7 +271,7 @@ Goal: **architecture, performance, mastery**
 
 These are hard. No shortcuts.
 
-## 14. `stateful-ui.nvim`
+## 14. `nvim-stateful-ui`
 
 **What it does**
 
@@ -227,7 +285,7 @@ These are hard. No shortcuts.
 - UI lifecycle
 - Separation of concerns
 
-## 15. `lsp-helper.nvim`
+## 15. `nvim-lsp-helper`
 
 **What it does**
 
@@ -241,7 +299,7 @@ These are hard. No shortcuts.
 - Callback composition
 - Error handling
 
-## 16. `plugin-framework.nvim`
+## 16. `nvim-plugin-framework`
 
 **What it does**
 
@@ -274,3 +332,57 @@ But I noticed something I was searching for really really basic things which I s
 basics. Because I looked to other langauges I use and I became like I can write marvelous things in other languages with my eyes closed, but I am struggling here so I decided to do what I did on the past with `JavaScript` even after beging able to use it for many thing I decided to create a bar level for myself in which I kept going higher and higher.
 
 I created something for just like what you see on this repo, a collection of challenges devided into tree major levels Beginner, Mid, Pro. So that I could measure my own knowledge with confidence and pratice more, which ended up being one of the best things I did for mastering JavaScript/TypeScript (Check my Github profile by yourself [Uanela Como](https://github.com/uanela)).
+
+This is the final thing, please add more context on the challenges bro ( and change nothing else bro really lreally nothing else)
+
+## Additional Context: How to Approach Each Level
+
+### Beginner Level — What “Success” Looks Like
+
+At this level, the goal is **not** to be clever or elegant. The goal is to:
+
+- Understand _when_ your Lua code runs
+- Get comfortable calling Neovim APIs without fear
+- Stop mixing Vimscript mental models with Lua ones
+
+For each beginner plugin, you should be able to answer:
+
+- When is this code executed (startup, command call, event)?
+- What Neovim state am I reading or mutating?
+- If this breaks, where would I add a `print()` first?
+
+If you finish Beginner and still feel “this is trivial” — good. That means it worked.
+
+### Mid Level — Where Things Break (and You Learn for Real)
+
+Mid-level challenges are designed to **force failure**. This is intentional.
+
+Here you should expect to:
+
+- Hit `require` loops
+- Corrupt shared state
+- Mis-handle async callbacks
+- Cache the wrong thing at the wrong time
+
+For each mid plugin, you should focus on:
+
+- Where state lives and who owns it
+- What happens if the same module is required twice
+- What happens if two async operations finish out of order
+
+If Mid feels frustrating, confusing, or humbling — you are exactly where you should be.
+
+### Pro Level — Thinking in Systems, Not Files
+
+The Pro challenges are no longer about features. They are about **architecture**.
+
+At this stage, you should be thinking about:
+
+- Public vs private APIs
+- Stable interfaces vs implementation details
+- How users can misuse your plugin
+- How your code behaves over long-running Neovim sessions
+
+You are expected to refactor aggressively here. If your first implementation survives untouched, you didn’t push hard enough.
+
+Completing even **one** Pro challenge confidently means you are no longer “learning Lua” — you are **using Lua professionally**.
