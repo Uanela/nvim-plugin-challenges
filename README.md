@@ -205,26 +205,25 @@ You should understand:
 
 Confusing these two concepts causes subtle bugs.
 
+Got it bro, here’s a **cleaner, more direct version** that 8/10 people will get at first glance:
+
 ## 8. `nvim-config-check`
 
 **What it does**
 
-- Command that checks if certain options are set correctly
+* A command that **checks if certain Neovim options are set correctly** and **warns the user if something is wrong**, without crashing Neovim.
 
 **You learn**
 
-- Tables as configuration
-- Validation logic
-- Error handling
+* Using **tables** to define expected configuration
+* Writing **validation logic** to compare expected vs actual
+* **Error handling** and defensive programming
 
 **Challenge context**
 
-This challenge introduces **defensive thinking**.
-
-You should consider:
-
-- How users can misconfigure things
-- How to report problems without crashing Neovim
+* Users might misconfigure Neovim, or other plugins might interfere
+* Your command should **detect problems and report them safely**
+* Think like a **doctor checking vitals**: **observe and warn, don’t fix or break things**
 
 This is the first step toward writing plugins other people can safely use.
 
